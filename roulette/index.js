@@ -105,7 +105,7 @@ const askQuestions = () => {
 };
 
 
-const execution=async ()=>{
+const gameExecution=async ()=>{
     init();
     const generateRandomNumber=randomNumber(1,5);
     // console.log("Generated number",generateRandomNumber);
@@ -127,4 +127,4 @@ const execution=async ()=>{
     }
 }
 
-execution()
+gameExecution()

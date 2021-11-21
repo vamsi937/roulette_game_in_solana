@@ -16,23 +16,39 @@ On successful win, the user will get the prize money (`Amount`*`Ratio`) in their
 
 Move to the preferred location on your machine and open terminal. Create a folder named `roulette`. Make sure you have successfully installed `npm` & `Node`. To check it, type in terminal `npm -v`. It will console out the version of npm installed. For checking about NodeJS, you can type `node -v`.
 
-Now, let's initialize a NodeJS application using the command: `npm init`. Fill in the details about the project. To directly initialize the project, use the command `npm init -y`. It will create a `package.json` file.  
+Now, let's initialize a NodeJS application using the command: `npm init`. Fill in the details about the project. To directly initialize the project, use the command `npm init -y`. It will create a `package.json` file, which keeps track of all the npm packages,i.e. node packages that will be used in your project. 
+
+
+## Setting up NodeJS application
+A `.js` file is created which will contain all the scripts for running the application. In case of this application, we create a file named `index.js`. 
+
+Let us create a basic statement and execute the application. In the file, put in the following instruction:
+```sh
+console.log("My first NodeJS application");
+```
+`console.log()` function prints the contents passed in the terminal. To run the application, we can use the following command: 
+> node index.js 
+
+![Initial Setup](https://raw.githubusercontent.com/vamsi937/roulette_game_in_solana/main/learn_assets/1_setup.png)
+
+Congratulations, you have now successfully run your first NodeJS application. 
 
 ## @solana/web3.js
 
 Solana nodes accept HTTP requests using the JSON-RPC 2.0 specification.
 To interact with a Solana node inside a Javascript application, we use the `solana-web3.js` library. It is available in the form of npm package as `@solana/web3.js`. 
-To install execute the following command:
+To install this package, execute the following command:
 > npm install @solana/web3.js 
-
-`NOTE:` For installing all the packages for the application which is already listed in `package.json` file, use the command `npm install`. 
 
 A `node_modules` folder will be created containing files related to the package.
 
-Now, create a file named `index.js` and lets declare a variable for the installed package. 
+Now, lets declare a variable for the installed package. 
 ```sh
 const web3 = require("@solana/web3.js");
 ```
+`NOTE:`
+- For installing all the packages for the application which is already listed in `package.json` file, use the command `npm install`. 
+- The quest was written with `@solana/web3.js` package of version `v.1.30.2` which you can check from the package.json file which was initially generated. If you try to follow this quest and find some funcitons not working, please roll back to the version in use here.
 
 ## Establishing Connection  
 First, we will establish a connection to a particular network on Solana. We use the `Connection` method from web3.js library. For this quest, we will be connected to the `devnet`. The connection constructor takes in a string representation of endpoint URL and commitment level. The end point URL can be specified using the `clusterApiUrl()` function which will return the current live endpoint to the Solana network we provide.
@@ -53,6 +69,9 @@ const userWallet=web3.Keypair.generate();
 console.log(userWallet);
 ```
 It will be printing the Public Key and the Secret Key for the generated wallet(in Uint8 Array format). 
+
+![Wallet Generation](https://raw.githubusercontent.com/vamsi937/roulette_game_in_solana/main/learn_assets/2_wallet_generation.png)
+
 Store it in variables(`userPublicKey` & `userSecretKey`), if you don't want to create a new `userWallet` everytime during the execution of the application. As we can generate a wallet instance from the secret key as:
 ```sh
 const userWallet=web3.Keypair.fromSecretKey(Uint8Array.from(userSecretKey));
@@ -149,9 +168,33 @@ const getWalletBalance=async (pubk)=>{
 }
 ```
 
+## Project Structure
+
+In the main file of `index.js`, we define all the other packages in use for printing messages in the console. (like `chalk`, `inquirer`,`figlet`). Also, the function for execution of game (namely `gameExecution()` is defined in the file). Some functions which are help during the game are defined in a file named `helper.js`. 
+We require all the helper functions in the `index.js` file using the following instruction:
+```sh
+const { getReturnAmount, totalAmtToBePaid, randomNumber } = require('./helper');
+```
+- `getReturnAmount` function returns the total amount the player will get if his/her guess is correct.
+- `totalAmtToBePaid` function returns the total amount to be paid by the player for each game.
+- `randomNumber` function generates a number between the defined range of [min,max] passed as parameter.
+
+The functions dealing with the Solana network are defined in a separate file named `solana.js`. We require these functions in the `index.js` file using the following line:
+```sh
+const {getWalletBalance,transferSOL,airDropSol}=require("./solana");
+```
+- `getWalletBalance` function returns the balance of wallet passed as argument
+- `transferSOL` function contains the transfer instruction (for transfering SOL from one wallet to another)
+- `airDropSol` function is used to airdrop Lamports on to the wallet (works only in the `devnet`)
+
+
 ## Running Application
 
 In the terminal, change your directory to the application folder and then run command `node index.js`. It will be asking a list of questions and you can guess the number at the end.
+
+![Losing Game](https://raw.githubusercontent.com/vamsi937/roulette_game_in_solana/main/learn_assets/3_failed_game.png)
+
+![Winning Game](https://raw.githubusercontent.com/vamsi937/roulette_game_in_solana/main/learn_assets/4_successful_game.png)
 
 ## Conclusion
 
