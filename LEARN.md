@@ -55,7 +55,7 @@ First, we will establish a connection to a particular network on Solana. We use 
 For our case, we will be using the `devnet` network. The code for connection will look like this:
 ```sh
 
-const connection=new web3.connection(web3.clusterApiUrl("devnet"),"confirmed");
+const connection=new web3.Connection(web3.clusterApiUrl("devnet"),"confirmed");
 //For checking whether the connection is successfully made
 console.log(connection);
 ```
