@@ -198,6 +198,4 @@ In the terminal, change your directory to the application folder and then run co
 
 ## Conclusion
 
-Congratulations, you have now learned how to perform a transaction on Solana network. 
-
-
+Congratulations, you have now learned how to perform a transaction on Solana network. **Meanwhile, you can proceed to [Layer3](https://alpha.layer3.xyz/task/create-a-roulette-game-in-solana) and claim your NFT reward for succesfully completing this quest!**
