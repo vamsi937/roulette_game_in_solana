@@ -509,11 +509,11 @@ To play the game, return to the terminal and run:
 
 You will see it ask questions and then you can guess the number.
 
-Losing Game:
 ![](/learn_src/learn_assets/3_failed_game.png)
+*Losing Game*
 
-Winning Game:
 ![](/learn_src/learn_assets/4_successful_game.png)
+*Winning Game*
 
 ## Troubleshooting
 
