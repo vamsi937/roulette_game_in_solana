@@ -48,7 +48,7 @@ const web3 = require("@solana/web3.js");
 ```
 `NOTE:`
 - For installing all the packages for the application which is already listed in `package.json` file, use the command `npm install`. 
-- The quest was written with `@solana/web3.js` package of version `v.1.30.2` which you can check from the package.json file which was initially generated. If you try to follow this quest and find some funcitons not working, please roll back to the version in use here.
+- The quest was written with `@solana/web3.js` package of version `v.1.30.2` which you can check from the package.json file which was initially generated. If you try to follow this quest and find some functions not working, please roll back to the version in use here.
 
 ## Establishing Connection  
 First, we will establish a connection to a particular network on Solana. We use the `Connection` method from web3.js library. For this quest, we will be connected to the `devnet`. The connection constructor takes in a string representation of endpoint URL and commitment level. The end point URL can be specified using the `clusterApiUrl()` function which will return the current live endpoint to the Solana network we provide.
