@@ -78,7 +78,7 @@ const userWallet=web3.Keypair.fromSecretKey(Uint8Array.from(userSecretKey));
 ```
 
 You can airdrop some SOL into this wallet using the functions from the previous quest.
-Now, we gave successfully established a connection, have wallets and funds in the wallet for the game. 
+Now, we have successfully established a connection, have wallets and funds in the wallet for the game. 
 
 ## Transaction Overview
 For making a successful transaction, the things needed:
